@@ -1,0 +1,56 @@
+var netret = [0.2, 0, 0.1, -0.1, 0.3, 0.15, 0.1, 0.05];
+
+var averageValue = mean(netret)
+
+var minusMean = subtractmean(netret, averageValue)
+
+var minusMeanSquared = square(minusMean)
+
+var addedMinusMeanSquared = add(minusMeanSquared)
+
+var sdSquared = addedMinusMeanSquared/minusMeanSquared.length
+
+var sd = Math.sqrt(sdSquared);
+
+console.log(sd)
+
+// find the mean
+function mean (array) {
+  sum = 0
+  for (j = 0; j < array.length; j++) {
+    sum = sum + array[j]
+  }
+  sum = sum/array.length
+  return sum
+}
+
+// subtract the mean from each number
+
+function subtractmean (array, av) {
+  ret = []
+  for (i = 0; i < array.length; i++) {
+    ret.push(array[i] - av)
+  }
+  return ret
+}
+
+// square the subtracted #
+function square (array) {
+  ret = []
+  for (k = 0; k < array.length; k++) {
+    var a = array[k] * array[k]
+    ret.push(a)
+  }
+  return ret
+}
+
+// add up all the squares
+function add (array) {
+  total = 0
+  for (x = 0; x < array.length; x++) {
+    total = total + array[x]
+  }
+  return total
+}
+
+
